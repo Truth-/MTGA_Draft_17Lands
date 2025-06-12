@@ -634,7 +634,7 @@ class FileExtractor:
         card_text = {}
         try:
             # Retrieve the title (card name) for each of the collected arena IDs
-            card_text = {x[constants.LOCAL_DATABASE_LOCALIZATION_COLUMN_ID]                         : x[constants.LOCAL_DATABASE_LOCALIZATION_COLUMN_TEXT] for x in data}
+            card_text = {x[constants.LOCAL_DATABASE_LOCALIZATION_COLUMN_ID]                         : x[constants.LOCAL_DATABASE_LOCALIZATION_COLUMN_FORMAT] for x in data}
 
         except Exception as error:
             result = False
