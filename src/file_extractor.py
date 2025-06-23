@@ -49,13 +49,14 @@ def check_set_data(set_data, ratings_data):
             card_found = False
             for card_id in set_data:
                 card_name = set_data[card_id][constants.DATA_FIELD_NAME].replace(
-                    "///", "//")
+                    "///", "//").replace(
+                    "</nobr>", "").replace(
+                    "<nobr>", "")
                 if rated_card == card_name:
                     card_found = True
                     break
             if not card_found:
                 logger.error("Card %s Missing", rated_card)
-
         except Exception as error:
             logger.error(error)
 
@@ -994,6 +995,7 @@ class FileExtractor:
         '''Link the 17Lands card ratings with the card data'''
         result = False
         try:
+            card[constants.DATA_FIELD_NAME] = card[constants.DATA_FIELD_NAME].replace("</nobr>", "").replace("<nobr>", "")
             card_name = card[constants.DATA_FIELD_NAME].replace("///", "//")
             matching_cards = [
                 x for x in self.card_ratings if x == card_name]
