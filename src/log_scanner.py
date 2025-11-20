@@ -241,6 +241,9 @@ class ArenaScanner:
             update = self.__sealed_pack_search()
             if not update:
                 update = self.__sealed_pack_search_v2()
+        elif ((self.draft_type == constants.LIMITED_TYPE_PICKTWO)
+                or (self.draft_type == constants.LIMITED_TYPE_PICKTWO_TRAD)):
+            print("dop")
         if not update:
             if ((previous_pack != self.current_pack) or
                 (previous_pick != self.current_pick) or

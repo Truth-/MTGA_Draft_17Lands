@@ -698,6 +698,8 @@ class FileExtractor:
 
     def _retrieve_stored_data(self, set_list):
         '''Retrieves card data from the temp_card_data.json file stored in the Temp folder'''
+        if "TLA" in set_list:
+            set_list.append("TLE")
         result = False
         self.card_dict = {}
         try:
