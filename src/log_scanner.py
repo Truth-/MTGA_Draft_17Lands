@@ -187,8 +187,9 @@ class ArenaScanner:
 
             if events:
                 # Find set name within the event string
+                # Remove numericals so alchemy sets are detected properly
                 sets = [i.seventeenlands[0] for i in self.set_list.data.values(
-                ) for x in event_sections if i.seventeenlands[0].lower() in x.lower()]
+                ) for x in event_sections if "".join(filter(lambda z: z.isalpha(), i.seventeenlands[0].lower())) in x.lower()]
                 # Remove duplicates while retaining order
                 sets = list(dict.fromkeys(sets))
 
